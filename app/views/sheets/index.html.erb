@@ -25,7 +25,8 @@
           <tr>
             <% for n in 1..5 do %>
               <td>
-                  <%= link_to movies_path, class: "sheets_index_button_tag" do %>
+                  <% sheet = @sheets.find(n)%>
+                  <%= link_to new_movie_schedule_reservation_path(@movie_id, @schedule_id, column: sheet.column, row: sheet.row, start_time: @start_time, end_time: @end_time, date: @date), class: "sheets_index_button_tag" do %>
                     <button type="button" class="box"><div class="box"></div></button>
                   <% end %>
               </td>
@@ -34,8 +35,10 @@
           <tr>
             <% for n in 6..10 do %>
               <td>
-                <div class="box">
-                
+                  <% sheet = @sheets.find(n)%>
+                  <%= link_to new_movie_schedule_reservation_path(@movie_id, @schedule_id, column: sheet.column, row: sheet.row, start_time: @start_time, end_time: @end_time, date: @date), class: "sheets_index_button_tag" do %>
+                    <button type="button" class="box"><div class="box"></div></button>
+                  <% end %>
                 </div>
               </td>
             <% end %>
@@ -43,7 +46,10 @@
           <tr>
             <% for n in 11..15 do %>
               <td>
-                <div class="box">
+                  <% sheet = @sheets.find(n)%>
+                  <%= link_to new_movie_schedule_reservation_path(@movie_id, @schedule_id, column: sheet.column, row: sheet.row, start_time: @start_time, end_time: @end_time, date: @date), class: "sheets_index_button_tag" do %>
+                    <button type="button" class="box"><div class="box"></div></button>
+                  <% end %>
                 </div>
               </td>
             <% end %>
@@ -57,3 +63,5 @@
     <div class="alphabet">C</div>
   </div>
 </div>
+ 
+<%= debug(params) if Rails.env.development? %>

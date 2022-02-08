@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  resources :reservations, only: [:create]
   resources :movies do
     resources :schedules do 
       resources :sheets
-      resources :reservations
+      resources :reservations, except: [:create]
     end
   end
   

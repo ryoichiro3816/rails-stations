@@ -12,6 +12,8 @@ gem 'font-awesome-sass'
 
 gem 'ransack'
 
+gem "date"
+
 gem 'kaminari'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'

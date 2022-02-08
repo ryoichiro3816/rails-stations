@@ -89,6 +89,7 @@ GEM
     childprocess (4.1.0)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    date (3.2.2)
     diff-lcs (1.4.4)
     erubi (1.10.0)
     execjs (2.8.1)
@@ -272,6 +273,7 @@ DEPENDENCIES
   bullet
   byebug
   capybara
+  date
   factory_bot_rails
   faker
   font-awesome-sass
