@@ -5,6 +5,9 @@ class ReservationsController < ApplicationController
     @schedule_id = params[:schedule_id]
     @sheet_id = params[:sheet_id]
     @date = params[:date]
+    if (@data.nil?)||(@sheet_id.nil?)
+
+    end
   end
 
   def create
