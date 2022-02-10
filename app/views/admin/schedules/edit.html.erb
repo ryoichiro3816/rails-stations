@@ -10,8 +10,8 @@
   <%= f.fields_for 'parents_attributes', @schedule.movie do |parent_f|%>
     <%= parent_f.label :name, '映画タイトル'%> <%= parent_f.text_field :name, class:"form-control"%></br>
   <% end %>
-  <%= f.label :start_time, '開始日時' %> <%= f.datetime_select :start_time, {},class: 'form-control' %></br>
-  <%= f.label :end_time, '終了日時' %> <%= f.datetime_select :end_time, {},class: 'form-control'%></br>
+  <%= f.label :start_time, '開始日時' %> <%= f.time_select :start_time, {},class: 'form-control' %></br>
+  <%= f.label :end_time, '終了日時' %> <%= f.time_select :end_time, {},class: 'form-control'%></br>
   <%= f.submit "save", class: "btn btn-primary"  %>
 <% end %>
 </div>

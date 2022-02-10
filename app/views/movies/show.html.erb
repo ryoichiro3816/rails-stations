@@ -5,10 +5,10 @@
 <%= @movie.description %>
 </br>
 <% @schedules.each do |schedule| %>
-  <%= link_to movie_schedule_sheets_path(schedule.movie_id, schedule.id, start_time: schedule.start_time, end_time: schedule.end_time), class: "index_button_tag" do %>
-    <button type="button" class="reserve_detail_button">座席を予約する</button>
+<%= form_tag(movie_schedule_sheets_path(schedule.movie_id, schedule.id), method: :get) do %>
+  <%= select_tag :date, options_for_select({"#{Date.today.strftime("%m月%e日")}": Date.today, "#{Date.today.days_since(1).strftime("%m月%e日")}": Date.today.days_since(1), "#{Date.today.days_since(2).strftime("%m月%e日")}": Date.today.days_since(2), "#{Date.today.days_since(3).strftime("%m月%e日")}": Date.today.days_since(3), "#{Date.today.days_since(4).strftime("%m月%e日")}": Date.today.days_since(4), "#{Date.today.days_since(5).strftime("%m月%e日")}": Date.today.days_since(5), "#{Date.today.days_since(6).strftime("%m月%e日")}": Date.today.days_since(6)}), include_blank: false %>
+    <%= button_tag '座席を予約する', class:"index_button_tag" %>
+    <%= schedule.start_time %>
+    <%= schedule.end_time %></br></br>
   <% end %>
-  <%= schedule.start_time %>
-  <%= schedule.end_time %></br></br>
 <% end %> 
-
