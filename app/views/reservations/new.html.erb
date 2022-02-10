@@ -10,16 +10,25 @@
 <div class="col-md-6 col-md-offset-3">
 <%= form_with(model: @reservation, url: reservations_path, local: true) do |f| %>
   <%# <%= render 'shared/error_messages' %> 
-  <%= f.label :name, '選択中の映画' %><%= f.hidden_field :name, value: @movie.name %></br>
+  <p>選択中の映画</p>
   <h2><%= @movie.name %></h2>
-  <%= f.label :date, '選択中の日時' %> <%= f.hidden_field :date, class: 'form-control' %></br>
+  <%= f.hidden_field :movie_name, value: @movie.name %></br>
   
-  <% index = Date.parse(@start_time).strftime("%u").to_i %>
-  <h2><%= Date.parse(@date).strftime("%m月 %e日 (#{weeks[index - 1]}) 開始時間: %l") %> <%= Date.parse(@end_time).strftime("終了予定時間: %l:%M") %></h2>
-  <%= f.label :is_showing, '上映中か'%> <%= f.select :is_showing, [["上映中", 1], ["公開予定", 0]], selected: 1%>
-  <%= f.label :description, '概要' %> <%= f.text_area :description, class: 'form-control' %></br>
-  <%= f.label :image_url, '画像URL' %> <%= f.text_field :image_url, class: 'form-control'%></br>
-  <%= f.submit "save", class: "btn btn-primary"  %>
+  <p>選択中の日時</p> 
+  <%= f.text_field :date, value: @date, readonly: true %>
+  <%= f.hidden_field :schedule_id, value: @schedule_id %>
+
+  <p>選択中の座席</p>
+  <%= f.text_field :sheet_id, value: @sheet_id, readonly: true %>
+
+  <p>氏名</p>
+   <%= f.text_field :name %>
+  <p>メールアドレス</p>
+
+   <%= f.email_field :email %>
+   
+  <div class="select_submit">
+  <%= f.submit "予約を確定する" %>
 <% end %>
 </div>
 </div>

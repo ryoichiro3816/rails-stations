@@ -26,7 +26,7 @@
             <% for n in 1..5 do %>
               <td>
                   <% sheet = @sheets.find(n)%>
-                  <%= link_to new_movie_schedule_reservation_path(@movie_id, @schedule_id, column: sheet.column, row: sheet.row, start_time: @start_time, end_time: @end_time, date: @date), class: "sheets_index_button_tag" do %>
+                  <%= link_to new_movie_schedule_reservation_path(@movie_id, @schedule_id, sheet_id: sheet.id, date: @date), class: "sheets_index_button_tag" do %>
                     <button type="button" class="box"><div class="box"></div></button>
                   <% end %>
               </td>
@@ -36,7 +36,7 @@
             <% for n in 6..10 do %>
               <td>
                   <% sheet = @sheets.find(n)%>
-                  <%= link_to new_movie_schedule_reservation_path(@movie_id, @schedule_id, column: sheet.column, row: sheet.row, start_time: @start_time, end_time: @end_time, date: @date), class: "sheets_index_button_tag" do %>
+                  <%= link_to new_movie_schedule_reservation_path(@movie_id, @schedule_id, sheet_id: sheet.id, date: @date), class: "sheets_index_button_tag" do %>
                     <button type="button" class="box"><div class="box"></div></button>
                   <% end %>
                 </div>
@@ -47,7 +47,7 @@
             <% for n in 11..15 do %>
               <td>
                   <% sheet = @sheets.find(n)%>
-                  <%= link_to new_movie_schedule_reservation_path(@movie_id, @schedule_id, column: sheet.column, row: sheet.row, start_time: @start_time, end_time: @end_time, date: @date), class: "sheets_index_button_tag" do %>
+                  <%= link_to new_movie_schedule_reservation_path(@movie_id, @schedule_id, sheet_id: sheet.id, date: @date), class: "sheets_index_button_tag" do %>
                     <button type="button" class="box"><div class="box"></div></button>
                   <% end %>
                 </div>

@@ -1,5 +1,6 @@
 class Schedule < ApplicationRecord
   belongs_to :movie
+  has_many :reservations
   accepts_nested_attributes_for :movie
   validates :movie_id, presence: true
   REGISTRABLE_ATTRIBUTES = %i(
