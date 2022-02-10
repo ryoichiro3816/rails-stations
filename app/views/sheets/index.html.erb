@@ -6,9 +6,33 @@
     <title>sheets</title>
   </head>
 <body>
-<%# <h1>Screen</h1>
+<h1>Screen</h1>
 </br>
-<div class="sheets_screens">
+<div cl
+
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <%= render 'shared/head' %>
+    	<%= stylesheet_link_tag 'sheets', media: 'all'%>
+    <title>sheets</title>
+  </head>
+  <body>
+    <div class="screen">
+      <p>スクリーン</p>
+    </div>
+    <table>
+        <% @sheets.each do |sheet|%>
+     <%= link_to new_movie_schedule_reservation_path(movie_id: @movie_id, schedule_id: @schedule_id,date: @date,sheet_id: sheet.id) do %>
+          <div class="sheet">
+            <p><%= sheet.row %><%= sheet.column%></p>
+          </div>
+        <% end %>
+      <% end %>
+    </table>
+  </body>
+</html>ass="sheets_screens">
   <div class="sheets_screen_1"><div class="sheets_screen_1_title">スクリーン1</div></div>
 </div> 
 <div class="sheets_chars_parents">
@@ -17,7 +41,7 @@
     <div class="alphabet">B</div>
     <div class="alphabet">C</div>
   </div>
-  <div class="sheets_char"> %>
+  <div class="sheets_char">
     <table>
       <thead>
         <tr>
@@ -63,12 +87,12 @@
           </tr>
       </tbody>
     </table>
-  <%# </div>
+  </div>
   <div class="side_sheets">
     <div class="alphabet">A</div>
     <div class="alphabet">B</div>
     <div class="alphabet">C</div>
   </div>
-</div> %>
+</div>
 </body>
 </html>
