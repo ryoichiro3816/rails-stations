@@ -1,4 +1,4 @@
 class Sheet < ApplicationRecord
-  has_many :reservations
+  has_one :reservation
   
 end
