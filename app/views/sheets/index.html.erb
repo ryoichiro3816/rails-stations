@@ -10,7 +10,7 @@
       <p>スクリーン</p>
     </div>
     <table>
-      <% @sheets.each do |sheet|%>
+      <% @sheets.preload(:reservation).each do |sheet|%>
         <% if sheet.reservation.nil? %>
           <%= link_to new_movie_schedule_reservation_path(movie_id: @movie_id, schedule_id: @schedule_id,date: @date,sheet_id: sheet.id) do %>
             <div class="sheet">
