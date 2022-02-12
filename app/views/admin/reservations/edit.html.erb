@@ -1,9 +1,4 @@
-<h1>Reservation Edit</h1>
-<% flash.each do |message_type, message| %>
-  <div class="alert alert-<%= message_type %>"><%= message %></div>
-<% end %>
-<div class="row">
-<div class="col-md-6 col-md-offset-3">
+
 <%= form_with(model: @reservaiton, url: admin_reservation_path(@reservation), local: true) do |f| %>
   <%# <%= render 'shared/error_messages' %> 
   <%= f.label :name, '予約者氏名' %> <%= f.text_field :name, :value => @reservation.name, class: 'form-control' %></br>
@@ -13,5 +8,3 @@
   <%= f.label :sheet_id, '座席' %> <%= f.collection_select :sheet_id, Sheet.all, :id, :id %></br></br>
   <%= f.submit "Update", class: "btn btn-primary"  %>
 <% end %>
-</div>
-</div>
