@@ -57,7 +57,7 @@ RSpec.describe Admin::ReservationsController, type: :controller do
     let!(:sheets) { create_list(:sheet, 5) }
     let!(:schedule) { create(:schedule, movie_id: movie.id) }
     let!(:reservation) { build(:reservation, { sheet_id: sheets.first.id, schedule_id: schedule.id }) }
-    before { get "/admin/reservations/:id", params: { id: reservation.id } }
+    before { get "/admin/reservations/:id/edit", params: { id: reservation.id } }
 
     it 'schedule_id, sheet_id, name, emailのすべてを受け取るフォームがあること' do
       expect(response.body).to include("name").and include("email").and include("schedule_id").and include("sheet_id")
