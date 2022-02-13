@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   end
   
   namespace :admin do
-    resources :schedules
     resources :reservations
+    resources :schedules
     resources :movies do
       resources :schedules 
     end
