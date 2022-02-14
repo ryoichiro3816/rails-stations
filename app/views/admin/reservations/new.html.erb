@@ -1,17 +1,37 @@
-<h1>Reservation Create</h1>
-<% flash.each do |message_type, message| %>
-  <div class="alert alert-<%= message_type %>"><%= message %></div>
-<% end %>
-<div class="row">
-<div class="col-md-6 col-md-offset-3">
-<%= form_with(model: @reservaiton, url: admin_reservations_path, local: true) do |f| %>
-  <%# <%= render 'shared/error_messages' %> 
-  <%= f.label :name, '予約者氏名' %> <%= f.text_field :name, class: 'form-control' %></br>
-  <%= f.label :email, '予約者Email' %> <%= f.text_field :email, class: 'form-control' %></br>
-  <%= f.label :schedule_id, 'Schedule_id'%> <%= f.collection_select :schedule_id, Schedule.all, :id, :id %>
-  <%= f.label :date, '予約時間' %> <%= select_tag :date, options_for_select({"#{Date.today.strftime("%m月%e日")}": Date.today, "#{Date.today.days_since(1).strftime("%m月%e日")}": Date.today.days_since(1), "#{Date.today.days_since(2).strftime("%m月%e日")}": Date.today.days_since(2), "#{Date.today.days_since(3).strftime("%m月%e日")}": Date.today.days_since(3), "#{Date.today.days_since(4).strftime("%m月%e日")}": Date.today.days_since(4), "#{Date.today.days_since(5).strftime("%m月%e日")}": Date.today.days_since(5), "#{Date.today.days_since(6).strftime("%m月%e日")}": Date.today.days_since(6)}), include_blank: false %></br>
-  <%= f.label :sheet_id, '座席' %> <%= f.collection_select :sheet_id, Sheet.all, :id, :id %></br></br>
-  <%= f.submit "save", class: "btn btn-primary"  %>
-<% end %>
-</div>
-</div>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <%= render 'shared/head' %>
+  	<%= stylesheet_link_tag 'reservations', media: 'all'%>
+	<title>new</title>
+</head>
+<body>
+<%# new template  %>
+  <div class="select_all">
+    <%= form_with url: reservations_path, scope: :reservation do |f|%>
+      <h2>予約ページ</h2>
+      <p>選択中の映画</p>
+      <div class="select">
+        <%= @movie_id.name %>
+        <%= f.hidden_field :movie_id, value: @movie_id.id%>
+      </div>
+      <p>選択中の日時</p>
+      <div class="select">
+        <%= f.text_field :date, value: @date, readonly: true %>
+        <%= f.hidden_field :schedule_id, value: @schedule_id %>
+      </div>
+      <p>選択中の座席</p>
+      <div class="select">
+        <%= f.text_field :sheet_id, value: @sheet_id, readonly: true %>
+      </div>
+      <p>氏名</p>
+        <%=f.text_field :name%>
+      <p>メールアドレス</p>
+        <%= f.email_field :email%>
+      <div class="select_submit">
+      <%= f.submit "予約を確定する"%>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>
