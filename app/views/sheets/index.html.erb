@@ -5,24 +5,80 @@
     	<%= stylesheet_link_tag 'sheets', media: 'all'%>
     <title>sheets</title>
   </head>
-  <body>
-    <div class="screen">
-      <p>スクリーン</p>
-    </div>
+<body>
+<h1>Screen</h1>
+</br>
+<div class="sheets_screens">
+  <div class="sheets_screen_1"><div class="sheets_screen_1_title">スクリーン1</div></div>
+</div> 
+<div class="sheets_chars_parents">
+  <div class="side_sheets">
+    <div class="alphabet">A</div>
+    <div class="alphabet">B</div>
+    <div class="alphabet">C</div>
+  </div>
+  <div class="sheets_char">
     <table>
-      <% @sheets.preload(:reservation).each do |sheet|%>
-        <% if sheet.reservation.nil? %>
-          <%= link_to new_movie_schedule_reservation_path(movie_id: @movie_id, schedule_id: @schedule_id,date: @date,sheet_id: sheet.id) do %>
-            <div class="sheet">
-              <p><%= sheet.row %><%= sheet.column%></p>
-            </div>
-          <% end %>
-        <% else %>
-          <div class="sheet">
-            <p><%= sheet.row %><%= sheet.column%></p>
-          </div>
-        <% end %>
-      <% end %>
+      <thead>
+        <tr>
+          <th><div class="number">1</div></th>
+          <th><div class="number">2</div></th>
+          <th><div class="number">3</div></th>
+          <th><div class="number">4</div></th>
+          <th><div class="number">5</div></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <% for n in 1..5 do %>
+              <td>
+                  <% sheet = @sheets.find(n)%>
+                  <% if sheet.reservation.nil? %>
+                  <%= link_to new_movie_schedule_reservation_path(@movie_id, @schedule_id, sheet_id: sheet.id, date: @date), class: "sheets_index_button_tag" do %>
+                    <button type="button" class="box"><div class="box"></div></button>
+                  <% end %>
+                  <% else %>
+                    <button type="button" class="box"><div class="box"></div></button>
+                  <% end %>
+              </td>
+            <% end %>
+          </tr>
+          <tr>
+            <% for n in 6..10 do %>
+              <td>
+                  <% sheet = @sheets.find(n)%>
+                  <% if sheet.reservation.nil? %>
+                  <%= link_to new_movie_schedule_reservation_path(@movie_id, @schedule_id, sheet_id: sheet.id, date: @date), class: "sheets_index_button_tag" do %>
+                    <button type="button" class="box"><div class="box"></div></button>
+                  <% end %>
+                  <% else %>
+                    <button type="button" class="box"><div class="box"></div></button>
+                  <% end %>
+              </td>
+            <% end %>
+          </tr>
+          <tr>
+            <% for n in 11..15 do %>
+              <td>
+                  <% sheet = @sheets.find(n)%>
+                  <% if sheet.reservation.nil? %>
+                  <%= link_to new_movie_schedule_reservation_path(@movie_id, @schedule_id, sheet_id: sheet.id, date: @date), class: "sheets_index_button_tag" do %>
+                    <button type="button" class="box"><div class="box"></div></button>
+                  <% end %>
+                  <% else %>
+                    <button type="button" class="box"><div class="box"></div></button>
+                  <% end %>
+              </td>
+            <% end %>
+          </tr>
+      </tbody>
     </table>
-  </body>
+  </div>
+  <div class="side_sheets">
+    <div class="alphabet">A</div>
+    <div class="alphabet">B</div>
+    <div class="alphabet">C</div>
+  </div>
+</div>
+</body>
 </html>
